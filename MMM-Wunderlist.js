@@ -81,7 +81,7 @@ Module.register("MMM-Wunderlist", {
 			}
 		}
 
-		var array = tasksShown.sort(function(a,b){ return b.due_date-a.due_date; });
+		var array = tasksShown.sort(function(a,b){ a = new Date(a.due_date);b = new Date(b.due_date);return a>b ? -1 : a<b ? 1 : 0; });
 		return array.slice(0, this.config.maximumEntries);
 	},
 
