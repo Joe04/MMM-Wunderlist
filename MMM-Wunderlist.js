@@ -80,7 +80,9 @@ Module.register("MMM-Wunderlist", {
 				}
 			}
 		}
-		return tasksShown.slice(0, this.config.maximumEntries);
+
+		var array = tasksShown.sort(function(a,b){ return b.due_date-a.due_date; });
+		return array.slice(0, this.config.maximumEntries);
 	},
 
 	getScripts: function() {
